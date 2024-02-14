@@ -29,21 +29,21 @@ const handleOnDelivery=()=>{
  typeof window !=='undefined' &&  localStorage.setItem('total', total())
 }
 
-const handleCheckout=async()=>{
-  typeof window !=='undefined' && localStorage.setItem('total', total())
-  setPaymentMethod(1);
-  const response =  await fetch('/api/stripe',{
-    method:"POST",
-    headers:{
-      'Content-Type':"application/json",
-    },
-    body: JSON.stringify(CartData.pizzas),
-  });
-  if(response.status === 500) return;
-  const data = await response.json();
-  toast.loading("Redirecting...");
-  router.push(data.url)
-}
+// const handleCheckout=async()=>{
+//   typeof window !=='undefined' && localStorage.setItem('total', total())
+//   setPaymentMethod(1);
+//   const response =  await fetch('/api/stripe',{
+//     method:"POST",
+//     headers:{
+//       'Content-Type':"application/json",
+//     },
+//     body: JSON.stringify(CartData.pizzas),
+//   });
+//   if(response.status === 500) return;
+//   const data = await response.json();
+//   toast.loading("Redirecting...");
+//   router.push(data.url)
+// }
     return(
         <Layout>
             <div className={css.container}>
@@ -122,7 +122,7 @@ const handleCheckout=async()=>{
                       {!Order && CartData.pizzas.length>0?(
                         <div className={css.buttons}>
                         <button className="btn" onClick={handleOnDelivery}>Pay on Delivery</button>
-                        <button className="btn" onClick={handleCheckout}>Pay Now</button>
+                        {/* <button className="btn" onClick={handleCheckout}>Pay Now</button> */}
                      </div>
                       ):null}
                       
